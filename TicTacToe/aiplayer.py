@@ -2,12 +2,12 @@ from math import inf
 
 
 class AI:
-    def __int__(self):
+    def __init__(self):
         self.state = []
         self.move = ""
 
-    def getBestMove(self, state, player):
-        winner_loser, done = self.check_current_state(state)
+    def find_move(self, state, player):
+        winner_loser, done = self.check(state)
         if done == "Done" and winner_loser == 'O':  # If AI won
             return 1, 0
         elif done == "Done" and winner_loser == 'X':  # If Human won
@@ -29,10 +29,10 @@ class AI:
             self.play_move(new_state, player, empty_cell)
 
             if player == 'O':  # If AI
-                result, _ = self.getBestMove(new_state, 'X')  # make more depth tree for human
+                result, _ = self.find_move(new_state, 'X')  # make more depth tree for human
                 move['score'] = result
             else:
-                result, _ = self.getBestMove(new_state, 'O')  # make more depth tree for AI
+                result, _ = self.find_move(new_state, 'O')  # make more depth tree for AI
                 move['score'] = result
 
             moves.append(move)
@@ -54,9 +54,9 @@ class AI:
 
         return best, best_move
 
-    def check_current_state(self, game_state):
+    def check(self, game_state):
 
-        # Check horizontals
+        #  horizontals
         if game_state[0][0] == game_state[0][1] and game_state[0][1] == game_state[0][2] and game_state[0][0] != ' ':
             return game_state[0][0], "Done"
         if game_state[1][0] == game_state[1][1] and game_state[1][1] == game_state[1][2] and game_state[1][0] != ' ':
@@ -64,7 +64,7 @@ class AI:
         if game_state[2][0] == game_state[2][1] and game_state[2][1] == game_state[2][2] and game_state[2][0] != ' ':
             return game_state[2][0], "Done"
 
-        # Check verticals
+        #  verticals
         if game_state[0][0] == game_state[1][0] and game_state[1][0] == game_state[2][0] and game_state[0][0] != ' ':
             return game_state[0][0], "Done"
         if game_state[0][1] == game_state[1][1] and game_state[1][1] == game_state[2][1] and game_state[0][1] != ' ':
@@ -72,13 +72,12 @@ class AI:
         if game_state[0][2] == game_state[1][2] and game_state[1][2] == game_state[2][2] and game_state[0][2] != ' ':
             return game_state[0][2], "Done"
 
-        # Check diagonals
+        #  diagonals
         if game_state[0][0] == game_state[1][1] and game_state[1][1] == game_state[2][2] and game_state[0][0] != ' ':
             return game_state[1][1], "Done"
         if game_state[2][0] == game_state[1][1] and game_state[1][1] == game_state[0][2] and game_state[2][0] != ' ':
             return game_state[1][1], "Done"
 
-        # Check if draw
         draw_flag = 0
         for i in range(3):
             for j in range(3):
@@ -99,7 +98,7 @@ class AI:
                 new_state[i][j] = state[i][j]
         return new_state
 
-    def start_move(self, field):
+    def find_and_translate_move(self, field):
         state = [[y.replace("-", " ") for y in x] for x in field]
-        _, block_choice = self.getBestMove(state, "O")
+        _, block_choice = self.find_move(state, "O")
         self.move = f"{chr(int((block_choice - 1) / 3) + 65)}{(block_choice - 1) % 3 + 1}"

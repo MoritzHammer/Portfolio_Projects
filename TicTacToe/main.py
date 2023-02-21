@@ -66,6 +66,7 @@ def setting():
         ai = True
         global aiPlayer
         aiPlayer = AI()
+        aiPlayer.winning_pos = WINNING_POSITIONS
     else:
         p2_name = input("Player 2 name: ") or "Player 2"
 
@@ -102,7 +103,7 @@ def choose(player1) -> (str, str):
 def ai_choose() -> (str, str):
     print("AI is calculating")
     Start = time.perf_counter()
-    aiPlayer.start_move(field)
+    aiPlayer.find_and_translate_move(field)
     End = time.perf_counter()
     co = aiPlayer.move
     print(f"It chooses {co} ({End - Start:0.3f} s).")
@@ -155,6 +156,7 @@ def draw_score():
     print_field()
     if again():
         game_start()
+
 
 def score():
     if not ai:
