@@ -4,19 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6097c728-09bf-41a8-a70b-c2bd93ee4e8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="6097c728-09bf-41a8-a70b-c2bd93ee4e8e" name="Changes" comment="Implemented connect 4 game board">
+      <change afterPath="$PROJECT_DIR$/Connect4/player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Connect4/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FunMachine/passwords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/FunMachine/passwords.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="b3162025-4885-4a5d-a2e2-e7070cb5133c" />
+        <option name="url" value="https://github.com/MoritzHammer/Portfolio_Projects.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -31,7 +53,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/admballuffvm/PycharmProjects/Udemy_Python/Portfolio_Projects",
+    "last_opened_file_path": "C:/Users/admballuffvm/PycharmProjects/Udemy_Python",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -48,14 +70,27 @@
       <option name="presentableId" value="Default" />
       <updated>1676449962987</updated>
       <workItem from="1676449964409" duration="99000" />
-      <workItem from="1676984919440" duration="5490000" />
+      <workItem from="1676984919440" duration="5551000" />
+      <workItem from="1677056756334" duration="14135000" />
     </task>
+    <task id="LOCAL-00001" summary="Implemented connect 4 game board">
+      <created>1676990511779</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676990511779</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented connect 4 game board" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented connect 4 game board" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Portfolio_Projects$main.coverage" NAME="main Coverage Results" MODIFIED="1676990429131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Connect4" />
+    <SUITE FILE_PATH="coverage/Portfolio_Projects$main.coverage" NAME="main Coverage Results" MODIFIED="1677077734944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Connect4" />
   </component>
 </project>
