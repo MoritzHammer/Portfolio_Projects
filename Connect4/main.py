@@ -1,9 +1,6 @@
-# TODO: game logic -> gravitation, connection (schau um den marker ob gleiche marker drumrum sind)
-# TODO: ai player
 
 import pyautogui
 import random
-import time
 from pynput import keyboard
 
 from player import Player
@@ -274,7 +271,6 @@ def print_players():
             player.print_me()
     else:
         players[0].print_me()
-        # TODO: AI print
 
 
 def print_player_turn():
@@ -290,5 +286,6 @@ def print_arrow(i):
 
 def clear_terminal():
     pyautogui.hotkey('ctrl', 'shift', 'alt', 'z')
+
 
 game()
