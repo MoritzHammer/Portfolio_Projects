@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6097c728-09bf-41a8-a70b-c2bd93ee4e8e" name="Changes" comment="Implemented connect 4 game board">
+    <list default="true" id="6097c728-09bf-41a8-a70b-c2bd93ee4e8e" name="Changes" comment="Clean up">
+      <change afterPath="$PROJECT_DIR$/Other/TerminalArt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Connect4/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Connect4/main.py" afterDir="false" />
     </list>
@@ -71,7 +72,8 @@
       <workItem from="1676449964409" duration="99000" />
       <workItem from="1676984919440" duration="5551000" />
       <workItem from="1677056756334" duration="14135000" />
-      <workItem from="1677131572208" duration="13412000" />
+      <workItem from="1677131572208" duration="14159000" />
+      <workItem from="1677217389366" duration="6119000" />
     </task>
     <task id="LOCAL-00001" summary="Implemented connect 4 game board">
       <created>1676990511779</created>
@@ -80,7 +82,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676990511779</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Connect 4 works now">
+      <created>1677155238216</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677155238216</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Clean up">
+      <created>1677155309078</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677155309078</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,9 +104,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented connect 4 game board" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented connect 4 game board" />
+    <MESSAGE value="Connect 4 works now" />
+    <MESSAGE value="Clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean up" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Portfolio_Projects$main.coverage" NAME="main Coverage Results" MODIFIED="1677155094601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Connect4" />
+    <SUITE FILE_PATH="coverage/Portfolio_Projects$TerminalArt.coverage" NAME="TerminalArt Coverage Results" MODIFIED="1677222256644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Other" />
+    <SUITE FILE_PATH="coverage/Portfolio_Projects$player.coverage" NAME="player Coverage Results" MODIFIED="1677217940358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Connect4" />
+    <SUITE FILE_PATH="coverage/Portfolio_Projects$main.coverage" NAME="main Coverage Results" MODIFIED="1677218086575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TicTacToe" />
   </component>
 </project>

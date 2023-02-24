@@ -124,7 +124,7 @@ def game_logic(gameBoard):
     else:
         clear_terminal()
         gameBoard.print()
-        print("You drawed!")
+        print("Draw!")
         continue_game()
 
 
