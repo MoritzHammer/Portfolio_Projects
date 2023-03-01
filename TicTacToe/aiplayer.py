@@ -8,11 +8,11 @@ class AI:
 
     def find_move(self, state, player):
         winner_loser, done = self.check(state)
-        if done == "Done" and winner_loser == 'O':  # If AI won
+        if done == "Done" and winner_loser == 'O':
             return 1, 0
-        elif done == "Done" and winner_loser == 'X':  # If Human won
+        elif done == "Done" and winner_loser == 'X':
             return -1, 0
-        elif done == "Draw":  # Draw condition
+        elif done == "Draw":
             return 0, 0
 
         moves = []
@@ -29,17 +29,17 @@ class AI:
             self.play_move(new_state, player, empty_cell)
 
             if player == 'O':  # If AI
-                result, _ = self.find_move(new_state, 'X')  # make more depth tree for human
+                result, _ = self.find_move(new_state, 'X')
                 move['score'] = result
             else:
-                result, _ = self.find_move(new_state, 'O')  # make more depth tree for AI
+                result, _ = self.find_move(new_state, 'O')
                 move['score'] = result
 
             moves.append(move)
 
         # Find best move
         best_move = None
-        if player == 'O':  # If AI player
+        if player == 'O':
             best = -inf
             for move in moves:
                 if move['score'] > best:

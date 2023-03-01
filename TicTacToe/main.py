@@ -35,17 +35,12 @@ def create_field():
 
 def print_field():
     print("---------------------")
-    top_row = "  | "
-    top_row += " | ".join(str(x + 1) for x in range(columns))
-    print(f"\t{top_row}")
+    top_row = "\t  | " + " | ".join(str(x + 1) for x in range(columns))
+    print(top_row)
     for n in range(rows):
-        char = chr(n + 65)
-        row = f"{char} |"
-        for m in range(columns):
-            row += f" {field[n][m]}"
-            if m != columns - 1:
-                row += f" |"
-        print(f"\t{row}")
+        row = f"\t{chr(n + 65)} |" + \
+               "".join(f" {field[n][m] } |" if m != columns - 1 else f" {field[n][m]}" for m in range(columns))
+        print(row)
     print("---------------------")
 
 

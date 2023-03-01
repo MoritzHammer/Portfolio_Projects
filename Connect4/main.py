@@ -3,15 +3,14 @@ import pyautogui
 import random
 from pynput import keyboard
 
+
 from player import Player
 
 markers = []
 players = []
 ARROW_POSITIONS = ["\t    ", "\t        ", "\t            ", "\t                ",
                    "\t                    ", "\t                        ", "\t                            "]
-NEIGHBOUR_CONNECTIONS = [(1, -1), (1, 0), (1, 1),
-                         (0, -1),         (0, 1),
-                         (-1, -1), (-1, 0), (-1, 1)]
+NEIGHBOUR_CONNECTIONS = [(1, -1), (1, 0), (1, 1),(0, -1),(0, 1),(-1, -1), (-1, 0), (-1, 1)]
 ROWS = 6
 COLUMNS = 7
 
@@ -40,7 +39,7 @@ class Board:
 
 
 def set_players():
-    player_size = int(input("How much players? (1/2): ") or "2")
+    player_size = int(input("How many players? (1/2): ") or "2")
     for i in range(player_size):
         global markers
         player = Player(markers)
@@ -56,8 +55,8 @@ winner = Player(markers)
 def game():
     global winner
     winner = Player(markers)
-    i = 0
-    press = True
+    actual_column = reset_col()
+    pressed = True
     gameBoard = Board()
     start_up(gameBoard)
 
@@ -66,20 +65,35 @@ def game():
             if event.key == keyboard.Key.esc:
                 break
             elif event.key == keyboard.Key.left:
-                i -= 0.5
-                if i < 0:
-                    i = 6.5
-                new_cycle(gameBoard, i)
+                actual_column = move_col_to_left(actual_column)
+                new_cycle(gameBoard, actual_column)
             elif event.key == keyboard.Key.right:
-                i += 0.5
-                if i > 6:
-                    i = -0.5
-                new_cycle(gameBoard, i)
+                actual_column = move_col_to_right(actual_column)
+                new_cycle(gameBoard, actual_column)
             elif event.key == keyboard.Key.space:
-                gameBoard = drop_piece(gameBoard, i, press)
-                press = not press
-                i = 0
-                new_cycle(gameBoard, i)
+                if not pressed:
+                    gameBoard = drop_piece(gameBoard, actual_column)
+                pressed = not pressed
+                actual_column = reset_col()
+                new_cycle(gameBoard, actual_column)
+
+
+def reset_col():
+    return 0
+
+
+def move_col_to_left(col_now):
+    col_now -= 0.5
+    if col_now < 0:
+        col_now = 6.5
+    return col_now
+
+
+def move_col_to_right(col_now):
+    col_now += 0.5
+    if col_now > 6:
+        col_now = -0.5
+    return col_now
 
 
 def start_up(gameBoard):
@@ -92,20 +106,19 @@ def start_up(gameBoard):
     new_cycle(gameBoard, 0)
 
 
-def drop_piece(gameBoard, i, keyboardinputIsPressed):
+def drop_piece(gameBoard, i):
     j = ROWS - 1
     new_board = gameBoard
-    if keyboardinputIsPressed:
-        for _ in range(ROWS):
-            if gameBoard.game_board[j][int(i)] == " ":
-                gameBoard.game_board[j][int(i)] = now_playing_player.marker
-                player_switch()
-                return gameBoard
-            elif j >= 0:
-                j -= 1
-            else:
-                print("Column already full. Choose again")
-                new_cycle(gameBoard, i)
+    for _ in range(ROWS):
+        if gameBoard.game_board[j][int(i)] == " ":
+            gameBoard.game_board[j][int(i)] = now_playing_player.marker
+            player_switch()
+            return gameBoard
+        elif j >= 0:
+            j -= 1
+        else:
+            print("Column already full. Choose again")
+            new_cycle(gameBoard, i)
     return new_board
 
 
@@ -120,7 +133,7 @@ def game_logic(gameBoard):
     if not is_draw(gameBoard):
         for con in allConnections:
             if len(con) >= 4:
-                four_connected(con[0], gameBoard)
+                are_four_connected(con[0], gameBoard)
     else:
         clear_terminal()
         gameBoard.print()
@@ -137,7 +150,7 @@ def is_draw(gameBoard):
     return True
 
 
-def four_connected(marker, gameBoard):
+def are_four_connected(marker, gameBoard):
     clear_terminal()
     global winner
     for player in players:
@@ -145,7 +158,7 @@ def four_connected(marker, gameBoard):
             winner = player
     gameBoard.print()
     print(f"\nYou won {winner.name}!\n"
-          f"It only took {21 - winner.pieces} pieces.")
+          f"It only took {21 - winner.piece_size} pieces.")
     continue_game()
 
 
@@ -238,7 +251,7 @@ def player_switch():
     n = now_playing_player.name
     for player in players:
         if player.name == n:
-            player.pieces -= 1
+            player.piece_size -= 1
         else:
             now_playing_player = player
 
@@ -284,6 +297,8 @@ def print_arrow(i):
     print(arrow)
 
 
+# implementation for pycharm where "ctrl", "shift", "alt" and "z" clears the terminal
+# Your terminal might differ
 def clear_terminal():
     pyautogui.hotkey('ctrl', 'shift', 'alt', 'z')
 
