@@ -10,7 +10,7 @@ markers = []
 players = []
 ARROW_POSITIONS = ["\t    ", "\t        ", "\t            ", "\t                ",
                    "\t                    ", "\t                        ", "\t                            "]
-NEIGHBOUR_CONNECTIONS = [(1, -1), (1, 0), (1, 1),(0, -1),(0, 1),(-1, -1), (-1, 0), (-1, 1)]
+NEIGHBOUR_CONNECTIONS = [(1, -1), (1, 0), (1, 1), (0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1)]
 ROWS = 6
 COLUMNS = 7
 
@@ -54,8 +54,10 @@ winner = Player(markers)
 
 def game():
     global winner
+    global players
+    players = []
     winner = Player(markers)
-    actual_column = reset_col()
+    actual_column = 0
     pressed = True
     gameBoard = Board()
     start_up(gameBoard)
@@ -73,13 +75,9 @@ def game():
             elif event.key == keyboard.Key.space:
                 if not pressed:
                     gameBoard = drop_piece(gameBoard, actual_column)
+                    actual_column = 0
                 pressed = not pressed
-                actual_column = reset_col()
                 new_cycle(gameBoard, actual_column)
-
-
-def reset_col():
-    return 0
 
 
 def move_col_to_left(col_now):
@@ -163,9 +161,11 @@ def are_four_connected(marker, gameBoard):
 
 
 def continue_game():
-    if input("Do you want to play again? (y/n): ") or "y" == "y":
+    if input("Do you want to play again? (y/n): ") == "y":
         clear_terminal()
         game()
+    else:
+        exit()
 
 
 def field_connections(placed):

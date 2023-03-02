@@ -34,7 +34,6 @@ class AI:
             else:
                 result, _ = self.find_move(new_state, 'O')
                 move['score'] = result
-
             moves.append(move)
 
         # Find best move

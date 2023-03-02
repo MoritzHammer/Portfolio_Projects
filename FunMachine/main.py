@@ -98,10 +98,9 @@ class Password:
     def create_password():
         password_pool = CHARS + CHARS_U
         length = int(input("How many characters do you need? (1 - 32): ") or 12)
-        special = input("Do you need special characters? y/n: ") or "y"
         needed = int(input("How many passwords do you need?: ") or 4)
 
-        if special == "y":
+        if input("Do you need special characters? y/n: ") == "y":
             password_pool += CHARS_SPECIAL
             return random_api(parameters(needed, length, password_pool, "generateStrings"))
         else:
@@ -109,10 +108,8 @@ class Password:
 
     @staticmethod
     def print_list(passwords):
-        for i, pw in enumerate(passwords):
-            print(f"PW{i + 1}:\t{pw}")
-        save = input("Do you want to save them? (y/n): ")
-        if save == "y":
+        print([f"PW{i + 1}:\t{pw}" for i, pw in enumerate(passwords)])
+        if input("Do you want to save them? (y/n): ") == "y":
             data = '\n'.join(passwords)
             reader.write_passwords(data)
 

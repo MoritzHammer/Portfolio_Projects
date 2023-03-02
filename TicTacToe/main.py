@@ -45,8 +45,8 @@ def print_field():
 
 
 def print_introduction():
-    print("Welcome to tic-tac-toe!")
-    print("You play by writing the coordinates of the spot you want to mark. "
+    print("Welcome to tic-tac-toe!"
+          "\nYou play by writing the coordinates of the spot you want to mark. "
           "\nFor example: 'A1', 'B2' or 'C1'. ")
     setting()
 
@@ -106,40 +106,30 @@ def ai_choose() -> (str, str):
 
 
 def placing_logic(co, mk, p1):
-    spot = "-"
-    player_column = int(co[1]) - 1
-    player_row = int(ord(co[0].upper())) - 65
+    player_column, player_row = int(co[1]) - 1, int(ord(co[0].upper())) - 65
     if player_column >= columns or player_row >= rows:
         print(f"'{co}' is not on the playing field. Please place again. ")
         play_loop(p1)
-    else:
-        spot = field[player_row][player_column]
+    spot = field[player_row][player_column]
 
     if spot != "-":
         print(f"Already placed marker '{spot}' on {co}. Please place again. ")
         play_loop(p1)
-    else:
-        field[player_row][player_column] = mk
+    field[player_row][player_column] = mk
 
 
 def winner_logic() -> bool:
     global winner
     for position in WINNING_POSITIONS:
-        p1 = position[0]
-        p2 = position[1]
-        p3 = position[2]
+        p1, p2, p3 = position[0], position[1], position[2]
         if field[p1[0]][p1[1]] == field[p2[0]][p2[1]] and field[p2[0]][p2[1]] == field[p3[0]][p3[1]]:
             if field[p1[0]][p1[1]] != "-":
                 if field[p1[0]][p1[1]] == PLAYER_1:
                     winner = PLAYER_1
                 else:
                     winner = PLAYER_2
-    draw = True
-    for col in range(columns):
-        for row in range(rows):
-            if field[row][col] == "-":
-                draw = False
-    if draw:
+
+    if not any((field[row][col] == "-" for row in range(rows) for col in range(columns))):
         draw_score()
 
     if winner != "":
@@ -151,28 +141,27 @@ def draw_score():
     print_field()
     if again():
         game_start()
+    else:
+        exit()
 
 
 def score():
-    if not ai:
-        print("You won.")
-        print_field()
-        if winner == PLAYER_1:
-            print(f"Congratulations {p1_name}! ")
-        elif winner == PLAYER_2:
+    if winner == PLAYER_1:
+        print(f"Congratulations {p1_name}! ")
+    elif winner == PLAYER_2:
+        if not ai:
+            print("You won.")
+            print_field()
             print(f"Good Job {p2_name} :)")
-    else:
-        if winner == PLAYER_1:
-            print(f"Congratulations {p1_name}! \n You won.")
-        elif winner == PLAYER_2:
+        else:
             print_field()
             print(f"And wins.")
 
 
 def again():
-    repeat = input("Do you want to play again? (y/n): ")
-    if repeat != "n":
+    if input("Do you want to play again? (y/n): ") != "n":
         return True
     return False
+
 
 game_start()
